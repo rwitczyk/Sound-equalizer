@@ -18,6 +18,7 @@ namespace EqualizerVisualisation
 {
     public partial class Form1 : Form
     {
+        public static bool isThreadRunning = false;
 
         ISoundOut soundOut;
 
@@ -33,12 +34,34 @@ namespace EqualizerVisualisation
 
         private void Button1_Click(object sender, EventArgs e)
         {
+
+          //  i = 30;
+          //  if (isThreadRunning == false)
+          //  {
+          //      i = 900;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                timer1.Start();
+                Thread playingThread = new Thread(Play);
+                playingThread.Start();
+                button1.Enabled = true;
+                button2.Enabled = true;
+                isThreadRunning = true;
+          //  }
+          //  else { i = 40; }
+
+        }
+
+        private void Play()
+        {
+            
             const string filename = @"D:\bbb.mp3";
             ProgressBar hz = progressBar1;
             EventWaitHandle waitHandle = new AutoResetEvent(false);
 
             try
             {
+                i = 0;
                 //create a source which provides audio data
                 using (ISampleSource source = CodecFactory.Instance.GetCodec(filename).ToSampleSource())
                 {
@@ -47,7 +70,7 @@ namespace EqualizerVisualisation
                     Equalizer equalizer = Equalizer.Create10BandEqualizer(source);
 
                     //create a soundout to play the source
-                    
+
                     if (WasapiOut.IsSupportedOnCurrentPlatform)
                     {
                         soundOut = new WasapiOut();
@@ -66,12 +89,12 @@ namespace EqualizerVisualisation
                     /*
                      * You can change the filter configuration of the equalizer at any time.
                      */
-                    hz.Value = 6;
+                    hz.Value = 16;
                     //(int)equalizer.SampleFilters[0].AverageGainDB; //eq set the gain of the first filter to 20dB (if needed, you can set the gain value for each channel of the source individually)
 
                     //wait until the playback finished
                     //of course that is optional
-                    waitHandle.WaitOne(5000); // TODO: ten watek blokuje robienie innych rzeczy, ale potrzebny aby muzyka wciaz leciala
+                    waitHandle.WaitOne(20000); // TODO: ten watek blokuje robienie innych rzeczy, ale potrzebny aby muzyka wciaz leciala
                     //remember to dispose and the soundout and the source
                     soundOut.Dispose();
                 }
@@ -84,12 +107,18 @@ namespace EqualizerVisualisation
             {
                 Console.WriteLine("Unexpected exception: " + ex.Message);
             }
-
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+                timer1.Stop();
                 soundOut.Pause(); 
+        }
+        int i = 0;
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            i++;
+            textBox1.Text = i.ToString();
         }
     }
 }
