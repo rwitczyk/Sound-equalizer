@@ -23,3 +23,4 @@ C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVis
 C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CopyComplete
 C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.exe
 C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.pdb
+D:\Dokumenty Roberta\Studia\6 semestr\Equalizer C#\EqualizerVisualisation\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csprojAssemblyReference.cache

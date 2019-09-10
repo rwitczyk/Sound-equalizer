@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSCore;
 using CSCore.Codecs;
 using CSCore.SoundOut;
-using CSCore.Streams;
 using CSCore.Streams.Effects;
 
 namespace EqualizerVisualisation
@@ -19,8 +12,9 @@ namespace EqualizerVisualisation
     public partial class Form1 : Form
     {
         public static bool isThreadRunning = false;
-
         ISoundOut soundOut;
+        Equalizer equalizer;
+        Thread playingThread;
 
         public Form1()
         {
@@ -28,55 +22,49 @@ namespace EqualizerVisualisation
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {}
+
+        private void Button1_Click(object sender, EventArgs e) // START 
         {
-
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
           //  i = 30;
-          //  if (isThreadRunning == false)
-          //  {
+            if (isThreadRunning == false)
+            {
           //      i = 900;
                 button1.Enabled = false;
                 button2.Enabled = false;
                 timer1.Start();
-                Thread playingThread = new Thread(Play);
+                playingThread = new Thread(Play);
                 playingThread.Start();
                 button1.Enabled = true;
                 button2.Enabled = true;
                 isThreadRunning = true;
-          //  }
-          //  else { i = 40; }
-
+            }
+            else {
+                //i = 40; 
+                timer1.Start();
+                soundOut.Play();
+            }
         }
 
         private void Play()
         {
-            
             const string filename = @"D:\bbb.mp3";
-            ProgressBar hz = progressBar1;
             EventWaitHandle waitHandle = new AutoResetEvent(false);
 
             try
             {
-                i = 0;
                 //create a source which provides audio data
                 using (ISampleSource source = CodecFactory.Instance.GetCodec(filename).ToSampleSource())
                 {
                     //create the equalizer.
                     //You can create a custom eq with any bands you want, or you can just use the default 10 band eq.
-                    Equalizer equalizer = Equalizer.Create10BandEqualizer(source);
+                    equalizer = Equalizer.Create10BandEqualizer(source);
 
                     //create a soundout to play the source
-
-                    if (WasapiOut.IsSupportedOnCurrentPlatform)
-                    {
+                    if (WasapiOut.IsSupportedOnCurrentPlatform) {
                         soundOut = new WasapiOut();
                     }
-                    else
-                    {
+                    else {
                         soundOut = new DirectSoundOut();
                     }
 
@@ -86,15 +74,10 @@ namespace EqualizerVisualisation
                     soundOut.Initialize(finalSource); //initialize the soundOut with the previously created finalSource
                     soundOut.Play();
 
-                    /*
-                     * You can change the filter configuration of the equalizer at any time.
-                     */
-                    hz.Value = 16;
                     //(int)equalizer.SampleFilters[0].AverageGainDB; //eq set the gain of the first filter to 20dB (if needed, you can set the gain value for each channel of the source individually)
+                    
+                    waitHandle.WaitOne(); // wait until the playback finished
 
-                    //wait until the playback finished
-                    //of course that is optional
-                    waitHandle.WaitOne(20000); // TODO: ten watek blokuje robienie innych rzeczy, ale potrzebny aby muzyka wciaz leciala
                     //remember to dispose and the soundout and the source
                     soundOut.Dispose();
                 }
@@ -108,17 +91,46 @@ namespace EqualizerVisualisation
                 Console.WriteLine("Unexpected exception: " + ex.Message);
             }
         }
-
-        private void Button2_Click(object sender, EventArgs e)
+        
+        private void Button2_Click(object sender, EventArgs e) // PAUSE
         {
+            if (isThreadRunning == true)
+            {
                 timer1.Stop();
-                soundOut.Pause(); 
+                soundOut.Pause();
+            }
         }
+
+        private void Button3_Click(object sender, EventArgs e) // STOP
+        {
+            timer1.Stop(); // TODO: Dodac zeby timer sie resetowal, a nie pauzowal tylko
+            soundOut.Dispose();
+            playingThread.Abort();
+            isThreadRunning = false;
+        }
+
         int i = 0;
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            ProgressBar hz = progressBar1;
+
             i++;
             textBox1.Text = i.ToString();
+            
+            hz.Value = i;
+
+            IList<EqualizerFilter> listChannels = equalizer.SampleFilters;
+            foreach (EqualizerFilter channel in listChannels)
+            {
+                Dictionary<Int32, EqualizerChannelFilter> oneChannel = channel.Filters;
+                foreach(KeyValuePair<Int32, EqualizerChannelFilter> entry in oneChannel)
+                {
+                    Console.WriteLine(entry.Value.Frequency); // <== how get actual value from this frequency ?
+                    //entry.Value.GainDB = 12;
+                    // TODO: wyswietlamy czestotliowsci jakie mamy w equalizerze, dla kazdej z nich trzeba pobrac jakos aktualna wartosc
+                    // i ja przypisac do progressBara
+                }
+            }
         }
     }
 }
