@@ -10,3 +10,16 @@ D:\Dokumenty Roberta\Studia\6 semestr\Equalizer C#\EqualizerVisualisation\Equali
 D:\Dokumenty Roberta\Studia\6 semestr\Equalizer C#\EqualizerVisualisation\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CopyComplete
 D:\Dokumenty Roberta\Studia\6 semestr\Equalizer C#\EqualizerVisualisation\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.exe
 D:\Dokumenty Roberta\Studia\6 semestr\Equalizer C#\EqualizerVisualisation\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.pdb
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.exe.config
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.exe
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.pdb
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\bin\Debug\CSCore.dll
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\bin\Debug\CSCore.xml
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csprojAssemblyReference.cache
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.Form1.resources
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.Properties.Resources.resources
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.GenerateResource.cache
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CoreCompileInputs.cache
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CopyComplete
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.exe
+C:\Users\BM\Downloads\Sound-equalizer-master\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.pdb
