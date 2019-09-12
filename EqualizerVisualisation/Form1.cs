@@ -26,21 +26,18 @@ namespace EqualizerVisualisation
 
         private void Button1_Click(object sender, EventArgs e) // START 
         {
-          //  i = 30;
             if (isThreadRunning == false)
             {
-          //      i = 900;
                 button1.Enabled = false;
                 button2.Enabled = false;
                 timer1.Start();
                 playingThread = new Thread(Play);
                 playingThread.Start();
-                button1.Enabled = true;
+                button1.Enabled = true; 
                 button2.Enabled = true;
                 isThreadRunning = true;
             }
             else {
-                //i = 40; 
                 timer1.Start();
                 soundOut.Play();
             }
@@ -103,12 +100,13 @@ namespace EqualizerVisualisation
 
         private void Button3_Click(object sender, EventArgs e) // STOP
         {
-            timer1.Stop(); // TODO: Dodac zeby timer sie resetowal, a nie pauzowal tylko
+            timer1.Stop();
+            i = 0;
             soundOut.Dispose();
             playingThread.Abort();
             isThreadRunning = false;
         }
-
+        
         int i = 0;
         private void Timer1_Tick(object sender, EventArgs e)
         {
