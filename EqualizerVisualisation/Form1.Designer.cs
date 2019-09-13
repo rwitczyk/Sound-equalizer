@@ -46,6 +46,7 @@
             this.progressBar8 = new System.Windows.Forms.ProgressBar();
             this.progressBar9 = new System.Windows.Forms.ProgressBar();
             this.progressBar10 = new System.Windows.Forms.ProgressBar();
+            this.progressBar11 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // progressBarTime
@@ -125,6 +126,7 @@
             // timerVisualization
             // 
             this.timerVisualization.Enabled = true;
+            this.timerVisualization.Interval = 50;
             this.timerVisualization.Tick += new System.EventHandler(this.TimerVisualization_Tick);
             // 
             // progressBar3
@@ -191,11 +193,20 @@
             this.progressBar10.Size = new System.Drawing.Size(520, 20);
             this.progressBar10.TabIndex = 15;
             // 
+            // progressBar11
+            // 
+            this.progressBar11.Location = new System.Drawing.Point(128, 317);
+            this.progressBar11.Maximum = 300;
+            this.progressBar11.Name = "progressBar11";
+            this.progressBar11.Size = new System.Drawing.Size(520, 20);
+            this.progressBar11.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 514);
+            this.Controls.Add(this.progressBar11);
             this.Controls.Add(this.progressBar10);
             this.Controls.Add(this.progressBar9);
             this.Controls.Add(this.progressBar8);
@@ -237,6 +248,7 @@
         private System.Windows.Forms.ProgressBar progressBar8;
         private System.Windows.Forms.ProgressBar progressBar9;
         private System.Windows.Forms.ProgressBar progressBar10;
+        private System.Windows.Forms.ProgressBar progressBar11;
     }
 }
 

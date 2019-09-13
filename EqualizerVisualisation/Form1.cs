@@ -73,7 +73,11 @@ namespace EqualizerVisualisation
         private void Timer1_Tick(object sender, EventArgs e)
         {
             ProgressBar musicTime = progressBarTime;
-            musicTime.Maximum = 300; // Tu trzeba ustawic dlugosc piosenki
+
+            // Music length
+            Bass.BASS_ChannelGetLength(handle);
+            long len = Bass.BASS_ChannelGetLength(handle, BASSMode.BASS_POS_BYTE);
+            musicTime.Maximum = (int) Bass.BASS_ChannelBytes2Seconds(handle, len);
 
             timeCounter++;
             textBox1.Text = timeCounter.ToString() + "s";
@@ -93,25 +97,40 @@ namespace EqualizerVisualisation
             ProgressBar progress8 = progressBar8;
             ProgressBar progress9 = progressBar9;
             ProgressBar progress10 = progressBar10;
+            ProgressBar progress11 = progressBar11;
+
 
             float[] buffer = new float[256];
             Bass.BASS_ChannelGetData(handle, buffer, (int)BASSData.BASS_DATA_FFT256);
-            
-            progress1.Value = (int)Math.Round(buffer[10] * 800);
-            progress2.Value = (int)Math.Round(buffer[20] * 2000);
-            progress3.Value = (int)Math.Round(buffer[30] * 2000);
-            progress4.Value = (int)Math.Round(buffer[40] * 2000);
-            progress5.Value = (int)Math.Round(buffer[50] * 2000);
-            progress6.Value = (int)Math.Round(buffer[55] * 2000);
-            progress7.Value = (int)Math.Round(buffer[60] * 2000);
-            progress8.Value = (int)Math.Round(buffer[70] * 2000);
-            progress9.Value = (int)Math.Round(buffer[80] * 2000);
-            progress10.Value = (int)Math.Round(buffer[90] * 2000); 
+
+            printOneValueInProgressBar(progressBar1, buffer[20]);
+            printOneValueInProgressBar(progressBar2, buffer[28]);
+            printOneValueInProgressBar(progressBar3, buffer[36]);
+            printOneValueInProgressBar(progressBar4, buffer[44]);
+            printOneValueInProgressBar(progressBar5, buffer[52]);
+            printOneValueInProgressBar(progressBar6, buffer[60]);
+            printOneValueInProgressBar(progressBar7, buffer[68]);
+            printOneValueInProgressBar(progressBar8, buffer[75]);
+            printOneValueInProgressBar(progressBar9, buffer[80]);
+            printOneValueInProgressBar(progressBar10, buffer[85]);
+            printOneValueInProgressBar(progressBar11, buffer[90]);
 
             // Do ogarniecia jak to pustawiac zeby dobrze wygladalo i na jakich wartosciach w bufferze
             // to ja popatrze moze
-            
+
             printBuffer(buffer);
+        }
+
+        public void printOneValueInProgressBar(ProgressBar progressBar, float value)
+        {
+            if ((int)Math.Round(value * 2000) < progressBar.Maximum)
+            {
+                progressBar.Value = (int)Math.Round(value * 2000);
+            }
+            else
+            {
+                progressBar.Value = progressBar.Maximum;
+            }
         }
 
         public void printBuffer(float[] buffer)
