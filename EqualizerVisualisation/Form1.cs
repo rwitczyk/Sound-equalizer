@@ -9,7 +9,7 @@ namespace EqualizerVisualisation
     {
         public static bool isThreadRunning = false; 
         Thread playingThread;
-        const string filename = @"D:\bbb.mp3";
+        string filename = @"D:\bbb.mp3";
 
         int handle;
         int timeCounter = 0;
@@ -109,6 +109,8 @@ namespace EqualizerVisualisation
             ProgressBar progress9 = verticalProgressBar9;
             ProgressBar progress10 = verticalProgressBar10;
             ProgressBar progress11 = verticalProgressBar11;
+            ProgressBar progress12 = verticalProgressBar12;
+
             float[] buffer = new float[256];
             Bass.BASS_ChannelGetData(handle, buffer, (int)BASSData.BASS_DATA_FFT256);
 
@@ -119,13 +121,13 @@ namespace EqualizerVisualisation
             printOneValueInProgressBar(verticalProgressBar5, buffer[52]);
             printOneValueInProgressBar(verticalProgressBar6, buffer[60]);
             printOneValueInProgressBar(verticalProgressBar7, buffer[68]);
-            printOneValueInProgressBar(verticalProgressBar8, buffer[75]);
-            printOneValueInProgressBar(verticalProgressBar9, buffer[80]);
-            printOneValueInProgressBar(verticalProgressBar10, buffer[85]);
-            printOneValueInProgressBar(verticalProgressBar11, buffer[90]);
+            printOneValueInProgressBar(verticalProgressBar8, buffer[72]);
+            printOneValueInProgressBar(verticalProgressBar9, buffer[76]);
+            printOneValueInProgressBar(verticalProgressBar10, buffer[80]);
+            printOneValueInProgressBar(verticalProgressBar11, buffer[85]);
+            printOneValueInProgressBar(verticalProgressBar12, buffer[90]);
 
             // Do ogarniecia jak to pustawiac zeby dobrze wygladalo i na jakich wartosciach w bufferze
-            // to ja popatrze moze
 
             printBuffer(buffer);
         }
@@ -155,6 +157,19 @@ namespace EqualizerVisualisation
                 Console.WriteLine(buffer[80] * 1000);
                 Console.WriteLine(buffer[90] * 1000);
                 Console.WriteLine(" ");
+            }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = openFileDialog1;
+            open.Filter = "MP3 files (.mp3)|*.mp3";
+            open.Title = "Wybierz plik do otworzenia";
+            open.ShowDialog();
+
+            if (open.FileName.ToString().EndsWith(".mp3"))
+            {
+                filename = open.FileName.ToString();
             }
         }
     }

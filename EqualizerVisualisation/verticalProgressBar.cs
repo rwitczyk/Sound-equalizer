@@ -15,7 +15,6 @@ namespace EqualizerVisualisation
         public static void SetState(this ProgressBar pBar, int state)
         {
             SendMessage(pBar.Handle, 1040, (IntPtr)state, IntPtr.Zero);
-
         }
     }
     class verticalProgressBar : ProgressBar
