@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using CSCore;
-using CSCore.Codecs;
-using CSCore.SoundOut;
-using CSCore.Streams.Effects;
+using Un4seen.Bass;
 
 namespace EqualizerVisualisation
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form // DO OGARNIECIA CZY DA SIE OBROCIC TE PROGRESSBARY, ABY TO SIE Z DOLU DO GORY WYSWIETLALO
     {
-        public static bool isThreadRunning = false;
-        ISoundOut soundOut;
-        Equalizer equalizer;
+        public static bool isThreadRunning = false; 
         Thread playingThread;
+        const string filename = @"D:\bbb.mp3";
+
+        int handle;
+        int timeCounter = 0;
 
         public Form1()
         {
@@ -28,106 +26,108 @@ namespace EqualizerVisualisation
         {
             if (isThreadRunning == false)
             {
-                button1.Enabled = false;
-                button2.Enabled = false;
                 timer1.Start();
+                timerVisualization.Start();
                 playingThread = new Thread(Play);
                 playingThread.Start();
-                button1.Enabled = true; 
-                button2.Enabled = true;
+
                 isThreadRunning = true;
             }
             else {
                 timer1.Start();
-                soundOut.Play();
+                timerVisualization.Start();
+                Bass.BASS_Start();
             }
         }
 
         private void Play()
         {
-            const string filename = @"D:\bbb.mp3";
-            EventWaitHandle waitHandle = new AutoResetEvent(false);
-
-            try
-            {
-                //create a source which provides audio data
-                using (ISampleSource source = CodecFactory.Instance.GetCodec(filename).ToSampleSource())
-                {
-                    //create the equalizer.
-                    //You can create a custom eq with any bands you want, or you can just use the default 10 band eq.
-                    equalizer = Equalizer.Create10BandEqualizer(source);
-
-                    //create a soundout to play the source
-                    if (WasapiOut.IsSupportedOnCurrentPlatform) {
-                        soundOut = new WasapiOut();
-                    }
-                    else {
-                        soundOut = new DirectSoundOut();
-                    }
-
-                    soundOut.Stopped += (s, x) => waitHandle.Set();
-
-                    IWaveSource finalSource = equalizer.ToWaveSource(16); //since the equalizer is a samplesource, you have to convert it to a raw wavesource
-                    soundOut.Initialize(finalSource); //initialize the soundOut with the previously created finalSource
-                    soundOut.Play();
-
-                    //(int)equalizer.SampleFilters[0].AverageGainDB; //eq set the gain of the first filter to 20dB (if needed, you can set the gain value for each channel of the source individually)
-                    
-                    waitHandle.WaitOne(); // wait until the playback finished
-
-                    //remember to dispose and the soundout and the source
-                    soundOut.Dispose();
-                }
-            }
-            catch (NotSupportedException ex)
-            {
-                Console.WriteLine("Fileformat not supported: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Unexpected exception: " + ex.Message);
-            }
+            Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
+            handle = Bass.BASS_StreamCreateFile(filename, 0, 0, BASSFlag.BASS_SAMPLE_FLOAT);
+            Bass.BASS_ChannelPlay(handle, false);
         }
         
         private void Button2_Click(object sender, EventArgs e) // PAUSE
         {
-            if (isThreadRunning == true)
+            if (isThreadRunning)
             {
                 timer1.Stop();
-                soundOut.Pause();
+                timerVisualization.Stop();
+                Bass.BASS_Pause();
             }
         }
-
+        // PO ZATRZYMANIU I URUCHOMIENIU OD NOWA NIE DZIALA
         private void Button3_Click(object sender, EventArgs e) // STOP
-        {
-            timer1.Stop();
-            i = 0;
-            soundOut.Dispose();
-            playingThread.Abort();
-            isThreadRunning = false;
+        { 
+            if (isThreadRunning)
+            {
+                timer1.Stop();
+                timerVisualization.Stop();
+                timeCounter = 0;
+                Bass.BASS_Stop();
+                playingThread.Abort();
+                isThreadRunning = false;
+            }
         }
         
-        int i = 0;
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            ProgressBar hz = progressBar1;
+            ProgressBar musicTime = progressBarTime;
+            musicTime.Maximum = 300; // Tu trzeba ustawic dlugosc piosenki
 
-            i++;
-            textBox1.Text = i.ToString();
+            timeCounter++;
+            textBox1.Text = timeCounter.ToString() + "s";
+
+            musicTime.Value = timeCounter;
+        }
+
+        private void TimerVisualization_Tick(object sender, EventArgs e)
+        {
+            ProgressBar progress1 = progressBar1;
+            ProgressBar progress2 = progressBar2;
+            ProgressBar progress3 = progressBar3;
+            ProgressBar progress4 = progressBar4;
+            ProgressBar progress5 = progressBar5;
+            ProgressBar progress6 = progressBar6;
+            ProgressBar progress7 = progressBar7;
+            ProgressBar progress8 = progressBar8;
+            ProgressBar progress9 = progressBar9;
+            ProgressBar progress10 = progressBar10;
+
+            float[] buffer = new float[256];
+            Bass.BASS_ChannelGetData(handle, buffer, (int)BASSData.BASS_DATA_FFT256);
             
-            hz.Value = i;
+            progress1.Value = (int)Math.Round(buffer[10] * 800);
+            progress2.Value = (int)Math.Round(buffer[20] * 2000);
+            progress3.Value = (int)Math.Round(buffer[30] * 2000);
+            progress4.Value = (int)Math.Round(buffer[40] * 2000);
+            progress5.Value = (int)Math.Round(buffer[50] * 2000);
+            progress6.Value = (int)Math.Round(buffer[55] * 2000);
+            progress7.Value = (int)Math.Round(buffer[60] * 2000);
+            progress8.Value = (int)Math.Round(buffer[70] * 2000);
+            progress9.Value = (int)Math.Round(buffer[80] * 2000);
+            progress10.Value = (int)Math.Round(buffer[90] * 2000); 
 
-            IList<EqualizerFilter> listChannels = equalizer.SampleFilters;
-            foreach (EqualizerFilter channel in listChannels)
+            // Do ogarniecia jak to pustawiac zeby dobrze wygladalo i na jakich wartosciach w bufferze
+            // to ja popatrze moze
+            
+            printBuffer(buffer);
+        }
+
+        public void printBuffer(float[] buffer)
+        {
+            if (isThreadRunning)
             {
-                Dictionary<Int32, EqualizerChannelFilter> oneChannel = channel.Filters;
-                foreach(KeyValuePair<Int32, EqualizerChannelFilter> entry in oneChannel)
-                {
-                    Console.WriteLine(entry.Value.Frequency); // <== how get actual value from this frequency ?
-                    //entry.Value.GainDB = 12;
-                    // TODO: wyswietlamy czestotliowsci jakie mamy w equalizerze, dla kazdej z nich trzeba pobrac jakos aktualna wartosc
-                    // i ja przypisac do progressBara
-                }
+                Console.WriteLine(buffer[10] * 1000);
+                Console.WriteLine(buffer[20] * 1000);
+                Console.WriteLine(buffer[30] * 1000);
+                Console.WriteLine(buffer[40] * 1000);
+                Console.WriteLine(buffer[50] * 1000);
+                Console.WriteLine(buffer[60] * 1000);
+                Console.WriteLine(buffer[70] * 1000);
+                Console.WriteLine(buffer[80] * 1000);
+                Console.WriteLine(buffer[90] * 1000);
+                Console.WriteLine(" ");
             }
         }
     }

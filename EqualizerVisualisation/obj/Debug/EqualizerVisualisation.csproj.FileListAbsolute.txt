@@ -37,3 +37,17 @@ C:\Users\BM\Downloads\Sound-equalizer-master (1)\Sound-equalizer-master\Equalize
 C:\Users\BM\Downloads\Sound-equalizer-master (1)\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CopyComplete
 C:\Users\BM\Downloads\Sound-equalizer-master (1)\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.exe
 C:\Users\BM\Downloads\Sound-equalizer-master (1)\Sound-equalizer-master\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.pdb
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.exe.config
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.exe
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\EqualizerVisualisation.pdb
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\CSCore.dll
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\CSCore.xml
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csprojAssemblyReference.cache
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.Form1.resources
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.Properties.Resources.resources
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.GenerateResource.cache
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CoreCompileInputs.cache
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.csproj.CopyComplete
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.exe
+E:\Sound-equalizer\EqualizerVisualisation\obj\Debug\EqualizerVisualisation.pdb
+E:\Sound-equalizer\EqualizerVisualisation\bin\Debug\Bass.Net.xml
