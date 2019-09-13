@@ -9,7 +9,7 @@ namespace EqualizerVisualisation
     {
         public static bool isThreadRunning = false; 
         Thread playingThread;
-        string filename = @"D:\bbb.mp3";
+        string filename;
 
         int handle;
         int timeCounter = 0;
@@ -32,11 +32,12 @@ namespace EqualizerVisualisation
 
         private void Form1_Load(object sender, EventArgs e)
         {}
-
+        
         private void Button1_Click(object sender, EventArgs e) // START 
         {
             if (isThreadRunning == false)
             {
+                
                 timer1.Start();
                 timerVisualization.Start();
                 playingThread = new Thread(Play);
@@ -65,19 +66,6 @@ namespace EqualizerVisualisation
                 timer1.Stop();
                 timerVisualization.Stop();
                 Bass.BASS_Pause();
-            }
-        }
-        // PO ZATRZYMANIU I URUCHOMIENIU OD NOWA NIE DZIALA
-        private void Button3_Click(object sender, EventArgs e) // STOP
-        { 
-            if (isThreadRunning)
-            {
-                timer1.Stop();
-                timerVisualization.Stop();
-                timeCounter = 0;
-                Bass.BASS_Stop();
-                playingThread.Abort();
-                isThreadRunning = false;
             }
         }
         
@@ -166,11 +154,20 @@ namespace EqualizerVisualisation
             open.Filter = "MP3 files (.mp3)|*.mp3";
             open.Title = "Wybierz plik do otworzenia";
             open.ShowDialog();
+            String[] path = open.FileName.ToString().Split('\\');
+            Console.WriteLine(path[path.Length - 1]);
 
             if (open.FileName.ToString().EndsWith(".mp3"))
             {
                 filename = open.FileName.ToString();
             }
+            timer1.Stop();
+            timerVisualization.Stop();
+            Bass.BASS_Pause();
+            timeCounter = 0;
+            button1.Enabled = true;
+            button2.Enabled = true;
+            textBox2.Text = path[path.Length - 1];
         }
     }
 }
