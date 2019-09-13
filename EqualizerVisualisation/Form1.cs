@@ -114,7 +114,7 @@ namespace EqualizerVisualisation
             float[] buffer = new float[256];
             Bass.BASS_ChannelGetData(handle, buffer, (int)BASSData.BASS_DATA_FFT256);
 
-            printOneValueInProgressBar(verticalProgressBar1, buffer[20]);
+            printOneValueInProgressBar(verticalProgressBar1, buffer[22]);
             printOneValueInProgressBar(verticalProgressBar2, buffer[28]);
             printOneValueInProgressBar(verticalProgressBar3, buffer[36]);
             printOneValueInProgressBar(verticalProgressBar4, buffer[44]);
@@ -134,9 +134,9 @@ namespace EqualizerVisualisation
 
         public void printOneValueInProgressBar(ProgressBar progressBar, float value)
         {
-            if ((int)Math.Round(value * 2000) < progressBar.Maximum)
+            if ((int)Math.Round(value * 150000) < progressBar.Maximum)
             {
-                progressBar.Value = (int)Math.Round(value * 2000);
+                progressBar.Value = (int)Math.Round(value * 150000);
             }
             else
             {
@@ -147,15 +147,15 @@ namespace EqualizerVisualisation
         {
             if (isThreadRunning)
             {
-                Console.WriteLine(buffer[10] * 1000);
-                Console.WriteLine(buffer[20] * 1000);
-                Console.WriteLine(buffer[30] * 1000);
-                Console.WriteLine(buffer[40] * 1000);
-                Console.WriteLine(buffer[50] * 1000);
-                Console.WriteLine(buffer[60] * 1000);
-                Console.WriteLine(buffer[70] * 1000);
-                Console.WriteLine(buffer[80] * 1000);
-                Console.WriteLine(buffer[90] * 1000);
+                Console.WriteLine(buffer[10] * 150000);
+                Console.WriteLine(buffer[20] * 150000);
+                Console.WriteLine(buffer[30] * 150000);
+                Console.WriteLine(buffer[40] * 150000);
+                Console.WriteLine(buffer[50] * 150000);
+                Console.WriteLine(buffer[60] * 150000);
+                Console.WriteLine(buffer[70] * 150000);
+                Console.WriteLine(buffer[80] * 150000);
+                Console.WriteLine(buffer[90] * 150000);
                 Console.WriteLine(" ");
             }
         }

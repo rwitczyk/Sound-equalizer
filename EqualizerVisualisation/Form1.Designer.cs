@@ -134,6 +134,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar11.Location = new System.Drawing.Point(624, 74);
             this.verticalProgressBar11.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar11.Maximum = 20000;
             this.verticalProgressBar11.Name = "verticalProgressBar11";
             this.verticalProgressBar11.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar11.TabIndex = 26;
@@ -142,6 +143,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar10.Location = new System.Drawing.Point(574, 74);
             this.verticalProgressBar10.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar10.Maximum = 20000;
             this.verticalProgressBar10.Name = "verticalProgressBar10";
             this.verticalProgressBar10.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar10.TabIndex = 25;
@@ -150,6 +152,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar9.Location = new System.Drawing.Point(524, 74);
             this.verticalProgressBar9.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar9.Maximum = 20000;
             this.verticalProgressBar9.Name = "verticalProgressBar9";
             this.verticalProgressBar9.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar9.TabIndex = 24;
@@ -158,6 +161,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar8.Location = new System.Drawing.Point(474, 74);
             this.verticalProgressBar8.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar8.Maximum = 20000;
             this.verticalProgressBar8.Name = "verticalProgressBar8";
             this.verticalProgressBar8.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar8.TabIndex = 23;
@@ -166,6 +170,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar7.Location = new System.Drawing.Point(423, 74);
             this.verticalProgressBar7.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar7.Maximum = 20000;
             this.verticalProgressBar7.Name = "verticalProgressBar7";
             this.verticalProgressBar7.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar7.TabIndex = 22;
@@ -174,6 +179,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar6.Location = new System.Drawing.Point(372, 74);
             this.verticalProgressBar6.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar6.Maximum = 20000;
             this.verticalProgressBar6.Name = "verticalProgressBar6";
             this.verticalProgressBar6.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar6.TabIndex = 21;
@@ -182,6 +188,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar5.Location = new System.Drawing.Point(322, 74);
             this.verticalProgressBar5.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar5.Maximum = 20000;
             this.verticalProgressBar5.Name = "verticalProgressBar5";
             this.verticalProgressBar5.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar5.TabIndex = 20;
@@ -190,6 +197,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar4.Location = new System.Drawing.Point(271, 74);
             this.verticalProgressBar4.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar4.Maximum = 20000;
             this.verticalProgressBar4.Name = "verticalProgressBar4";
             this.verticalProgressBar4.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar4.TabIndex = 19;
@@ -198,6 +206,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar3.Location = new System.Drawing.Point(220, 74);
             this.verticalProgressBar3.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar3.Maximum = 20000;
             this.verticalProgressBar3.Name = "verticalProgressBar3";
             this.verticalProgressBar3.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar3.TabIndex = 18;
@@ -206,6 +215,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar2.Location = new System.Drawing.Point(170, 74);
             this.verticalProgressBar2.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar2.Maximum = 20000;
             this.verticalProgressBar2.Name = "verticalProgressBar2";
             this.verticalProgressBar2.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar2.TabIndex = 17;
@@ -214,6 +224,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar1.Location = new System.Drawing.Point(119, 74);
             this.verticalProgressBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar1.Maximum = 20000;
             this.verticalProgressBar1.Name = "verticalProgressBar1";
             this.verticalProgressBar1.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar1.TabIndex = 16;
@@ -222,6 +233,7 @@ namespace EqualizerVisualisation
             // 
             this.verticalProgressBar12.Location = new System.Drawing.Point(675, 74);
             this.verticalProgressBar12.Margin = new System.Windows.Forms.Padding(4);
+            this.verticalProgressBar12.Maximum = 20000;
             this.verticalProgressBar12.Name = "verticalProgressBar12";
             this.verticalProgressBar12.Size = new System.Drawing.Size(43, 531);
             this.verticalProgressBar12.TabIndex = 28;
