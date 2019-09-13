@@ -5,7 +5,7 @@ using Un4seen.Bass;
 
 namespace EqualizerVisualisation
 {
-    public partial class Form1 : Form // DO OGARNIECIA CZY DA SIE OBROCIC TE PROGRESSBARY, ABY TO SIE Z DOLU DO GORY WYSWIETLALO
+    public partial class Form1 : Form 
     {
         public static bool isThreadRunning = false; 
         Thread playingThread;
@@ -17,6 +17,17 @@ namespace EqualizerVisualisation
         public Form1()
         {
             InitializeComponent();
+            ModifyProgressBarColor.SetState(verticalProgressBar1, 2);
+            ModifyProgressBarColor.SetState(verticalProgressBar2, 2);
+            ModifyProgressBarColor.SetState(verticalProgressBar3, 2);
+            ModifyProgressBarColor.SetState(verticalProgressBar4, 2);
+            ModifyProgressBarColor.SetState(verticalProgressBar5, 3);
+            ModifyProgressBarColor.SetState(verticalProgressBar6, 3);
+            ModifyProgressBarColor.SetState(verticalProgressBar7, 3);
+            ModifyProgressBarColor.SetState(verticalProgressBar8, 3);
+            ModifyProgressBarColor.SetState(verticalProgressBar9, 4);
+            ModifyProgressBarColor.SetState(verticalProgressBar10, 4);
+            ModifyProgressBarColor.SetState(progressBarTime, 4);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -77,7 +88,7 @@ namespace EqualizerVisualisation
             // Music length
             Bass.BASS_ChannelGetLength(handle);
             long len = Bass.BASS_ChannelGetLength(handle, BASSMode.BASS_POS_BYTE);
-            musicTime.Maximum = (int) Bass.BASS_ChannelBytes2Seconds(handle, len);
+            musicTime.Maximum = (int)Bass.BASS_ChannelBytes2Seconds(handle, len);
 
             timeCounter++;
             textBox1.Text = timeCounter.ToString() + "s";
@@ -87,33 +98,31 @@ namespace EqualizerVisualisation
 
         private void TimerVisualization_Tick(object sender, EventArgs e)
         {
-            ProgressBar progress1 = progressBar1;
-            ProgressBar progress2 = progressBar2;
-            ProgressBar progress3 = progressBar3;
-            ProgressBar progress4 = progressBar4;
-            ProgressBar progress5 = progressBar5;
-            ProgressBar progress6 = progressBar6;
-            ProgressBar progress7 = progressBar7;
-            ProgressBar progress8 = progressBar8;
-            ProgressBar progress9 = progressBar9;
-            ProgressBar progress10 = progressBar10;
-            ProgressBar progress11 = progressBar11;
-
-
+            ProgressBar progress1 = verticalProgressBar1;
+            ProgressBar progress2 = verticalProgressBar2;
+            ProgressBar progress3 = verticalProgressBar3;
+            ProgressBar progress4 = verticalProgressBar4;
+            ProgressBar progress5 = verticalProgressBar5;
+            ProgressBar progress6 = verticalProgressBar6;
+            ProgressBar progress7 = verticalProgressBar7;
+            ProgressBar progress8 = verticalProgressBar8;
+            ProgressBar progress9 = verticalProgressBar9;
+            ProgressBar progress10 = verticalProgressBar10;
+            ProgressBar progress11 = verticalProgressBar11;
             float[] buffer = new float[256];
             Bass.BASS_ChannelGetData(handle, buffer, (int)BASSData.BASS_DATA_FFT256);
 
-            printOneValueInProgressBar(progressBar1, buffer[20]);
-            printOneValueInProgressBar(progressBar2, buffer[28]);
-            printOneValueInProgressBar(progressBar3, buffer[36]);
-            printOneValueInProgressBar(progressBar4, buffer[44]);
-            printOneValueInProgressBar(progressBar5, buffer[52]);
-            printOneValueInProgressBar(progressBar6, buffer[60]);
-            printOneValueInProgressBar(progressBar7, buffer[68]);
-            printOneValueInProgressBar(progressBar8, buffer[75]);
-            printOneValueInProgressBar(progressBar9, buffer[80]);
-            printOneValueInProgressBar(progressBar10, buffer[85]);
-            printOneValueInProgressBar(progressBar11, buffer[90]);
+            printOneValueInProgressBar(verticalProgressBar1, buffer[20]);
+            printOneValueInProgressBar(verticalProgressBar2, buffer[28]);
+            printOneValueInProgressBar(verticalProgressBar3, buffer[36]);
+            printOneValueInProgressBar(verticalProgressBar4, buffer[44]);
+            printOneValueInProgressBar(verticalProgressBar5, buffer[52]);
+            printOneValueInProgressBar(verticalProgressBar6, buffer[60]);
+            printOneValueInProgressBar(verticalProgressBar7, buffer[68]);
+            printOneValueInProgressBar(verticalProgressBar8, buffer[75]);
+            printOneValueInProgressBar(verticalProgressBar9, buffer[80]);
+            printOneValueInProgressBar(verticalProgressBar10, buffer[85]);
+            printOneValueInProgressBar(verticalProgressBar11, buffer[90]);
 
             // Do ogarniecia jak to pustawiac zeby dobrze wygladalo i na jakich wartosciach w bufferze
             // to ja popatrze moze
@@ -132,7 +141,6 @@ namespace EqualizerVisualisation
                 progressBar.Value = progressBar.Maximum;
             }
         }
-
         public void printBuffer(float[] buffer)
         {
             if (isThreadRunning)

@@ -1,4 +1,6 @@
-﻿namespace EqualizerVisualisation
+﻿using System.Windows.Forms;
+
+namespace EqualizerVisualisation
 {
     partial class Form1
     {
@@ -35,35 +37,35 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.timerVisualization = new System.Windows.Forms.Timer(this.components);
-            this.progressBar3 = new System.Windows.Forms.ProgressBar();
-            this.progressBar4 = new System.Windows.Forms.ProgressBar();
-            this.progressBar5 = new System.Windows.Forms.ProgressBar();
-            this.progressBar6 = new System.Windows.Forms.ProgressBar();
-            this.progressBar7 = new System.Windows.Forms.ProgressBar();
-            this.progressBar8 = new System.Windows.Forms.ProgressBar();
-            this.progressBar9 = new System.Windows.Forms.ProgressBar();
-            this.progressBar10 = new System.Windows.Forms.ProgressBar();
-            this.progressBar11 = new System.Windows.Forms.ProgressBar();
+            this.verticalProgressBar10 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar9 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar8 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar7 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar6 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar5 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar4 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar3 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar2 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar1 = new EqualizerVisualisation.verticalProgressBar();
+            this.verticalProgressBar11 = new EqualizerVisualisation.verticalProgressBar();
             this.SuspendLayout();
             // 
             // progressBarTime
             // 
-            this.progressBarTime.Location = new System.Drawing.Point(128, 442);
-            this.progressBarTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.progressBarTime.Location = new System.Drawing.Point(105, 572);
+            this.progressBarTime.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarTime.MarqueeAnimationSpeed = 1000;
             this.progressBarTime.Name = "progressBarTime";
-            this.progressBarTime.Size = new System.Drawing.Size(805, 27);
+            this.progressBarTime.Size = new System.Drawing.Size(604, 22);
             this.progressBarTime.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(757, 110);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(568, 89);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.Size = new System.Drawing.Size(69, 19);
             this.button1.TabIndex = 2;
             this.button1.Text = "Uruchom";
             this.button1.UseVisualStyleBackColor = true;
@@ -71,10 +73,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(873, 110);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(655, 89);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(56, 19);
             this.button2.TabIndex = 3;
             this.button2.Text = "Pauza";
             this.button2.UseVisualStyleBackColor = true;
@@ -87,142 +89,127 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 403);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(105, 547);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(97, 22);
+            this.textBox1.Size = new System.Drawing.Size(74, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(757, 210);
+            this.button3.Location = new System.Drawing.Point(568, 171);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 23);
+            this.button3.Size = new System.Drawing.Size(66, 19);
             this.button3.TabIndex = 5;
             this.button3.Text = "Zatrzymaj";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(128, 54);
-            this.progressBar1.Maximum = 300;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.progressBar1.Size = new System.Drawing.Size(520, 23);
-            this.progressBar1.TabIndex = 6;
-            // 
-            // progressBar2
-            // 
-            this.progressBar2.Location = new System.Drawing.Point(128, 83);
-            this.progressBar2.Maximum = 300;
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(520, 20);
-            this.progressBar2.TabIndex = 7;
-            // 
             // timerVisualization
             // 
             this.timerVisualization.Enabled = true;
-            this.timerVisualization.Interval = 50;
             this.timerVisualization.Tick += new System.EventHandler(this.TimerVisualization_Tick);
             // 
-            // progressBar3
+            // verticalProgressBar10
             // 
-            this.progressBar3.Location = new System.Drawing.Point(128, 109);
-            this.progressBar3.Maximum = 300;
-            this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(520, 20);
-            this.progressBar3.TabIndex = 8;
+            this.verticalProgressBar10.Location = new System.Drawing.Point(446, 60);
+            this.verticalProgressBar10.Name = "verticalProgressBar10";
+            this.verticalProgressBar10.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar10.TabIndex = 25;
             // 
-            // progressBar4
+            // verticalProgressBar9
             // 
-            this.progressBar4.Location = new System.Drawing.Point(128, 135);
-            this.progressBar4.Maximum = 300;
-            this.progressBar4.Name = "progressBar4";
-            this.progressBar4.Size = new System.Drawing.Size(520, 20);
-            this.progressBar4.TabIndex = 9;
+            this.verticalProgressBar9.Location = new System.Drawing.Point(409, 60);
+            this.verticalProgressBar9.Name = "verticalProgressBar9";
+            this.verticalProgressBar9.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar9.TabIndex = 24;
             // 
-            // progressBar5
+            // verticalProgressBar8
             // 
-            this.progressBar5.Location = new System.Drawing.Point(128, 161);
-            this.progressBar5.Maximum = 300;
-            this.progressBar5.Name = "progressBar5";
-            this.progressBar5.Size = new System.Drawing.Size(520, 20);
-            this.progressBar5.TabIndex = 10;
+            this.verticalProgressBar8.Location = new System.Drawing.Point(371, 60);
+            this.verticalProgressBar8.Name = "verticalProgressBar8";
+            this.verticalProgressBar8.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar8.TabIndex = 23;
             // 
-            // progressBar6
+            // verticalProgressBar7
             // 
-            this.progressBar6.Location = new System.Drawing.Point(128, 187);
-            this.progressBar6.Maximum = 300;
-            this.progressBar6.Name = "progressBar6";
-            this.progressBar6.Size = new System.Drawing.Size(520, 20);
-            this.progressBar6.TabIndex = 11;
+            this.verticalProgressBar7.Location = new System.Drawing.Point(333, 60);
+            this.verticalProgressBar7.Name = "verticalProgressBar7";
+            this.verticalProgressBar7.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar7.TabIndex = 22;
             // 
-            // progressBar7
+            // verticalProgressBar6
             // 
-            this.progressBar7.Location = new System.Drawing.Point(128, 213);
-            this.progressBar7.Maximum = 300;
-            this.progressBar7.Name = "progressBar7";
-            this.progressBar7.Size = new System.Drawing.Size(520, 20);
-            this.progressBar7.TabIndex = 12;
+            this.verticalProgressBar6.Location = new System.Drawing.Point(295, 60);
+            this.verticalProgressBar6.Name = "verticalProgressBar6";
+            this.verticalProgressBar6.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar6.TabIndex = 21;
             // 
-            // progressBar8
+            // verticalProgressBar5
             // 
-            this.progressBar8.Location = new System.Drawing.Point(128, 239);
-            this.progressBar8.Maximum = 300;
-            this.progressBar8.Name = "progressBar8";
-            this.progressBar8.Size = new System.Drawing.Size(520, 20);
-            this.progressBar8.TabIndex = 13;
+            this.verticalProgressBar5.Location = new System.Drawing.Point(257, 60);
+            this.verticalProgressBar5.Name = "verticalProgressBar5";
+            this.verticalProgressBar5.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar5.TabIndex = 20;
             // 
-            // progressBar9
+            // verticalProgressBar4
             // 
-            this.progressBar9.Location = new System.Drawing.Point(128, 265);
-            this.progressBar9.Maximum = 300;
-            this.progressBar9.Name = "progressBar9";
-            this.progressBar9.Size = new System.Drawing.Size(520, 20);
-            this.progressBar9.TabIndex = 14;
+            this.verticalProgressBar4.Location = new System.Drawing.Point(219, 60);
+            this.verticalProgressBar4.Name = "verticalProgressBar4";
+            this.verticalProgressBar4.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar4.TabIndex = 19;
             // 
-            // progressBar10
+            // verticalProgressBar3
             // 
-            this.progressBar10.Location = new System.Drawing.Point(128, 291);
-            this.progressBar10.Maximum = 300;
-            this.progressBar10.Name = "progressBar10";
-            this.progressBar10.Size = new System.Drawing.Size(520, 20);
-            this.progressBar10.TabIndex = 15;
+            this.verticalProgressBar3.Location = new System.Drawing.Point(181, 60);
+            this.verticalProgressBar3.Name = "verticalProgressBar3";
+            this.verticalProgressBar3.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar3.TabIndex = 18;
             // 
-            // progressBar11
+            // verticalProgressBar2
             // 
-            this.progressBar11.Location = new System.Drawing.Point(128, 317);
-            this.progressBar11.Maximum = 300;
-            this.progressBar11.Name = "progressBar11";
-            this.progressBar11.Size = new System.Drawing.Size(520, 20);
-            this.progressBar11.TabIndex = 16;
+            this.verticalProgressBar2.Location = new System.Drawing.Point(143, 60);
+            this.verticalProgressBar2.Name = "verticalProgressBar2";
+            this.verticalProgressBar2.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar2.TabIndex = 17;
+            // 
+            // verticalProgressBar1
+            // 
+            this.verticalProgressBar1.Location = new System.Drawing.Point(105, 60);
+            this.verticalProgressBar1.Name = "verticalProgressBar1";
+            this.verticalProgressBar1.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar1.TabIndex = 16;
+            // 
+            // verticalProgressBar11
+            // 
+            this.verticalProgressBar11.Location = new System.Drawing.Point(484, 60);
+            this.verticalProgressBar11.Name = "verticalProgressBar11";
+            this.verticalProgressBar11.Size = new System.Drawing.Size(32, 481);
+            this.verticalProgressBar11.TabIndex = 26;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 514);
-            this.Controls.Add(this.progressBar11);
-            this.Controls.Add(this.progressBar10);
-            this.Controls.Add(this.progressBar9);
-            this.Controls.Add(this.progressBar8);
-            this.Controls.Add(this.progressBar7);
-            this.Controls.Add(this.progressBar6);
-            this.Controls.Add(this.progressBar5);
-            this.Controls.Add(this.progressBar4);
-            this.Controls.Add(this.progressBar3);
-            this.Controls.Add(this.progressBar2);
-            this.Controls.Add(this.progressBar1);
+            this.ClientSize = new System.Drawing.Size(900, 620);
+            this.Controls.Add(this.verticalProgressBar11);
+            this.Controls.Add(this.verticalProgressBar10);
+            this.Controls.Add(this.verticalProgressBar9);
+            this.Controls.Add(this.verticalProgressBar8);
+            this.Controls.Add(this.verticalProgressBar7);
+            this.Controls.Add(this.verticalProgressBar6);
+            this.Controls.Add(this.verticalProgressBar5);
+            this.Controls.Add(this.verticalProgressBar4);
+            this.Controls.Add(this.verticalProgressBar3);
+            this.Controls.Add(this.verticalProgressBar2);
+            this.Controls.Add(this.verticalProgressBar1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBarTime);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -237,18 +224,18 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Timer timerVisualization;
-        private System.Windows.Forms.ProgressBar progressBar3;
-        private System.Windows.Forms.ProgressBar progressBar4;
-        private System.Windows.Forms.ProgressBar progressBar5;
-        private System.Windows.Forms.ProgressBar progressBar6;
-        private System.Windows.Forms.ProgressBar progressBar7;
-        private System.Windows.Forms.ProgressBar progressBar8;
-        private System.Windows.Forms.ProgressBar progressBar9;
-        private System.Windows.Forms.ProgressBar progressBar10;
-        private System.Windows.Forms.ProgressBar progressBar11;
+        private verticalProgressBar verticalProgressBar1;
+        private verticalProgressBar verticalProgressBar2;
+        private verticalProgressBar verticalProgressBar3;
+        private verticalProgressBar verticalProgressBar4;
+        private verticalProgressBar verticalProgressBar5;
+        private verticalProgressBar verticalProgressBar6;
+        private verticalProgressBar verticalProgressBar7;
+        private verticalProgressBar verticalProgressBar8;
+        private verticalProgressBar verticalProgressBar9;
+        private verticalProgressBar verticalProgressBar10;
+        private verticalProgressBar verticalProgressBar11;
     }
 }
 
